@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ficha-tecnica-de-preparo": {
+      "hosting": {
+        "Ficha-Tecnica-Preparo-Angular": [
+          "ficha-tecnica-de-preparo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ficha-tecnica-de-preparo"
+  }
+}

@@ -1,0 +1,267 @@
+<div fxLayout
+    fxLayout.xs="column" 
+    fxLayoutAlign="start start"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0"
+>
+    <div fxFlex="100%" fxFlex.xs="100%">
+        <h1 mat-dialog-title>Ficha Técnica de Preparo</h1>
+    </div>
+</div>
+<mat-dialog-content>
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="50%" fxFlex.xs="100%">
+            <b>Preparação:</b> {{this.data.nome}}
+        </div>
+        <div fxFlex="50%" fxFlex.xs="100%">
+            <b>Categoria:</b> {{this.data.categoria}}
+        </div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="100%" fxFlex.xs="100%"><h2>Informações técnicas</h2></div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Grau de Dificuldade: {{this.data.grauDificuldade}}</p></div>
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Rendimento (%): {{this.data.rendimentoPorc}}</p></div>
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Peso da Porção (g): {{this.data.pesoPorcaoGrama}}</p></div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Tempo de Preparo: {{this.data.tempoPreparo}}</p></div>
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Fator de cocção: {{this.data.fatorCoccao}}</p></div>
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Custo da Total (R$): {{this.data.preco}}</p></div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Rendimento (g): {{this.data.rendimentoGrama}}</p></div>
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Número de porções: {{this.data.rendimentoPorc}}</p></div>
+        <div fxFlex="33%" fxFlex.xs="100%"><p>Custo da porção (R$): {{this.data.custoPorc}}</p></div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="100%" fxFlex.xs="100%"><p>Densidade energética (kcal/g): {{this.data.energia}}</p></div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="100%" fxFlex.xs="100%">
+            <h2>Ingredientes e Modo de Preparo</h2>
+        </div>
+    </div>
+    <div *ngFor="let ingredientePP of this.data.prePreparoIngredientes">
+        <mat-card class="card-ingredientes">
+            <div fxLayout
+                fxLayout.xs="column" 
+                fxLayoutAlign="start start"
+                fxLayoutGap="10px"
+                fxLayoutGap.xs="0"
+            >
+                <div fxFlex="100%" fxFlex.xs="100%"><p>Ingrediente: {{ingredientePP.ingrediente}}</p></div>
+            </div>
+
+            <div fxLayout
+                fxLayout.xs="column" 
+                fxLayoutAlign="start start"
+                fxLayoutGap="10px"
+                fxLayoutGap.xs="0"
+            >
+                <div fxFlex="33%" fxFlex.xs="100%"><p>Pré-Preparo: {{ingredientePP.prePreparo}}</p></div>
+                <div fxFlex="33%" fxFlex.xs="100%"><p>Medida Caseira: {{ingredientePP.medidaCaseira}}</p></div>
+                <div fxFlex="33%" fxFlex.xs="100%"><p>Fator correção (g): {{ingredientePP.fatorCorrecao}}</p></div>
+            </div>
+            <div fxLayout
+                fxLayout.xs="column" 
+                fxLayoutAlign="start start"
+                fxLayoutGap="10px"
+                fxLayoutGap.xs="0"
+            >
+                <div fxFlex="33%" fxFlex.xs="100%"><p>Peso bruto (g): {{ingredientePP.pesoBruto}}</p></div>
+                <div fxFlex="33%" fxFlex.xs="100%"><p>Peso liquido (g): {{ingredientePP.pesoLiquido}}</p></div>
+                <div fxFlex="33%" fxFlex.xs="100%"><p>Preço (1000g | 1000ml): {{ingredientePP.preco}}</p></div>
+            </div>
+        </mat-card>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="100%" fxFlex.xs="100%"><h2>Modo de Preparo</h2></div>
+    </div>
+
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+    >
+        <div fxFlex="100%" fxFlex.xs="100%"><b>Preparação:</b> {{this.data.preparacao}}</div>
+    </div>
+    
+    <div fxLayout
+        fxLayout.xs="column" 
+        fxLayoutAlign="start start"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0"
+        >
+        <div fxFlex="100%" fxFlex.xs="100%"><h2>Valor nutricional</h2></div>
+    </div>
+    <mat-card class="card-ingredientes">
+        <div fxLayout
+            fxLayout.xs="column" 
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+            >
+            <div fxFlex="100%" fxFlex.xs="100%"><b>INFORMAÇÃO NUTRICIONAL - Porção de XXX g (1 unidade)</b></div>
+        </div>
+        
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="70%" fxFlex.xs="60%">Quantidade por porção</div>
+            <div fxFlex="30%" fxFlex.xs="40%">% VD (*)</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Valor Energético(kcal)</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.energia}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdEnergia}}</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Valor Energético(kj)</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.energiaJaule}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">*</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Carboidrato</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.carboidrato}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdCarboidrato}}</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Proteina</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.proteina}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdProteina}}</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Gordura Totais</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.lipideo}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdLipideo}}</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Gordura Saturada</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.gorduraSaturada}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdGorduraSaturada}}</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Gordura Trans</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.gorduraTrans}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%"></div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Fibra Alimentar</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.fibra}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdFibra}}</div>
+        </div>
+
+        <div fxLayout
+            fxLayoutAlign="start start"
+            fxLayoutGap="10px"
+            fxLayoutGap.xs="0"
+            class="border-tabela"
+        >
+            <div fxFlex="40%" fxFlex.xs="40%">Sódio</div>
+            <div fxFlex="30%" fxFlex.xs="25%">{{this.data.sodio}}</div>
+            <div fxFlex="30%" fxFlex.xs="35%">{{this.data.vdSodio}}</div>
+        </div>
+    </mat-card>
+</mat-dialog-content>

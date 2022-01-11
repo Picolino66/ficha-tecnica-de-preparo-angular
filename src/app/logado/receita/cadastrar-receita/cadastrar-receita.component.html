@@ -1,0 +1,213 @@
+<div class="grid-container">
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Cadastrar Receita</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="dashboard-card-content">
+      <mat-grid-list cols="6" rowHeight="75px">
+
+        <mat-grid-tile [colspan]="6" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Nome da Receita</mat-label>
+            <input matInput #input placeholder="Ex. Bolo de Cenoura"
+            [(ngModel)]="receita.nome" name="nome" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="6" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Ingredientes</mat-label>
+            <input matInput #input placeholder="Cenoura" [matAutocomplete]="auto"
+            [(ngModel)]="prePreparoIngrediente.ingrediente" name="ingrediente"
+            (ngModelChange)="modelChangeFn($event)">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option  *ngFor="let ingredienteFiltrado of this.ingredientesListaFiltrado" [value]="ingredienteFiltrado.nome">
+                {{ingredienteFiltrado.nome}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Pré-Preparo</mat-label>
+            <input matInput #input placeholder="Rale a cenoura"
+            [(ngModel)]="prePreparoIngrediente.prePreparo" name="prePreparo" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Medida Caseira</mat-label>
+            <input matInput #input placeholder="5 cenouras"
+            [(ngModel)]="prePreparoIngrediente.medidaCaseira" name="medidaCaseira" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="7" rowHeight="75px">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Peso Bruto (g)</mat-label>
+            <input matInput #input placeholder="100"
+            [(ngModel)]="prePreparoIngrediente.pesoBruto" name="pesoBruto" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Peso Líquido (g)</mat-label>
+            <input matInput #input placeholder="80"
+            [(ngModel)]="prePreparoIngrediente.pesoLiquido" name="pesoLiquido" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Preço (1000g | 1000ml)</mat-label>
+            <input matInput #input placeholder="10.50"
+            [(ngModel)]="prePreparoIngrediente.preco" name="preco" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button color="warn" style="width: 90px;" (click)="adicionarIngrediente()">Adicionar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div *ngIf="receita.prePreparoIngredientes.length > 0">
+        <mat-grid-list cols="12" rowHeight="75px">
+          <div *ngFor="let ppi of receita.prePreparoIngredientes; let i = index">
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <button mat-stroked-button color="primary" (click)="mostrarPrePreparoIngrediente(i)">{{ ppi.ingrediente }}</button>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+      </div>
+      <div *ngIf="this.mostrarPPI">
+        <mat-grid-list cols="6" rowHeight="75px">
+          <mat-grid-tile [colspan]="6" [rowspan]="1">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Ingredientes</mat-label>
+                <input matInput #input placeholder="Cenoura" [matAutocomplete]="auto"
+                [(ngModel)]="varMostrarPrePreparoIngrediente.ingrediente" name="ingrediente"
+                (ngModelChange)="modelChangeFn($event)">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option  *ngFor="let ingredienteFiltrado of this.ingredientesListaFiltrado" [value]="ingredienteFiltrado.nome">
+                    {{ingredienteFiltrado.nome}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="3" [rowspan]="1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Pré-Preparo</mat-label>
+              <input matInput #input placeholder="Rale a cenoura"
+              [(ngModel)]="varMostrarPrePreparoIngrediente.prePreparo" name="prePreparo" autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="3" [rowspan]="1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Medida Caseira</mat-label>
+              <input matInput #input placeholder="5 cenouras"
+              [(ngModel)]="varMostrarPrePreparoIngrediente.medidaCaseira" name="medidaCaseira" autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="7" rowHeight="75px">
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Peso Bruto (g)</mat-label>
+              <input matInput #input placeholder="100"
+              [(ngModel)]="varMostrarPrePreparoIngrediente.pesoBruto" name="pesoBruto" autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Peso Líquido (g)</mat-label>
+              <input matInput #input placeholder="80"
+              [(ngModel)]="varMostrarPrePreparoIngrediente.pesoLiquido" name="pesoLiquido" autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Preço (1000g | 1000ml)</mat-label>
+              <input matInput #input placeholder="10.50"
+              [(ngModel)]="varMostrarPrePreparoIngrediente.preco" name="preco" autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-raised-button color="warn" style="width: 90px;" (click)="atualizarIngrediente(indexAtual)">Atualizar</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+
+      <mat-grid-list cols="6" rowHeight="75px">
+        <mat-grid-tile [colspan]="6" [rowspan]="2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Preparação</mat-label>
+            <textarea matInput [(ngModel)]="receita.preparacao" rows="4"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+            placeholder="Após ter todos ingredientes já pre-preparado, misture todos na forma..."></textarea>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Grau de Dificuldade</mat-label>
+            <input matInput #input placeholder="Fácil"
+            [(ngModel)]="receita.grauDificuldade" name="grauDificuldade" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Tempo de Preparo</mat-label>
+            <input matInput #input placeholder="1 hora"
+            [(ngModel)]="receita.tempoPreparo" name="tempoPreparo" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Categoria</mat-label>
+            <input matInput #input placeholder="Bolo"
+            [(ngModel)]="receita.categoria" name="categoria" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Rendimento</mat-label>
+            <input matInput #input placeholder="2000"
+            [(ngModel)]="receita.rendimentoGrama" name="rendimentoGrama" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Número de Porções</mat-label>
+            <input matInput #input placeholder="20"
+            [(ngModel)]="receita.numeroPorcoes" name="numeroPorcoes" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Peso da Porção</mat-label>
+            <input matInput #input placeholder="100"
+            [(ngModel)]="receita.pesoPorcaoGrama" name="pesoPorcaoGrama" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <mat-grid-list cols="12" rowHeight="40px">
+        <mat-grid-tile [colspan]="11">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button color="primary" style="width: 90px;" (click)="salvarReceita()">Salvar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-actions>
+  </mat-card>
+</div>
