@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Receita } from 'src/app/classes/receita.model';
-import { PrePreparoIngrediente } from 'src/app/classes/prepreparo.model';
-import { ReceitaService } from '../../service/receita/receita.service';
-import { IngredienteService } from '../../service/ingrediente/ingrediente.service';
-import { IngredienteNomeId } from 'src/app/classes/ingredienteNomeId.model';
-import { NutrientesReceita } from 'src/app/classes/nutrientesReceita.model';
+import { Receita } from 'src/app/entities/receita.model';
+import { PrePreparoIngrediente } from 'src/app/entities/prepreparo.model';
+import { ReceitaService } from '../../../../services/receita/receita.service';
+import { IngredienteService } from '../../../../services/ingrediente/ingrediente.service';
+import { IngredienteNomeId } from 'src/app/entities/ingredienteNomeId.model';
+import { NutrientesReceita } from 'src/app/entities/nutrientesReceita.model';
+import { ContadoresService } from 'src/app/services/contadores/contadores.service';
 @Component({
   selector: 'app-cadastrar-receita',
   templateUrl: './cadastrar-receita.component.html',
@@ -92,7 +93,8 @@ ingredientesListaFiltrado: any;
 
   constructor(
     private _receitaService: ReceitaService,
-    private _ingredienteService: IngredienteService
+    private _ingredienteService: IngredienteService,
+    private _contadoresService: ContadoresService
   ){}
 
   ngOnInit(): void {
@@ -127,6 +129,7 @@ ingredientesListaFiltrado: any;
     this.resetaReceita();
     await this._receitaService.setNutrientesReceita(this.nutrientesReceita, idReceita)
     this.resetaNutrientesReceita();
+    this._contadoresService.updateReceita();
   }
 
   adicionarIngrediente(): void {

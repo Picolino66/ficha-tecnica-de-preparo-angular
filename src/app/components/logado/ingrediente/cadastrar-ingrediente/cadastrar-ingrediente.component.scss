@@ -1,0 +1,29 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: inherit;
+  top: 70px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.dashboard-card-content {
+  text-align: left;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.m-10 {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .m-10 {
+    width: 100%;
+  }
+}

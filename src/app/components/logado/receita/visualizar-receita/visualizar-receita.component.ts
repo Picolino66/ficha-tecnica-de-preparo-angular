@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ReceitaService } from '../../service/receita/receita.service';
+import { ReceitaService } from '../../../../services/receita/receita.service';
 
 @Component({
   selector: 'app-visualizar-receita',

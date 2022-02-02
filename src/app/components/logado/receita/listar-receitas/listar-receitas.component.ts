@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReceitaService } from '../../service/receita/receita.service';
+import { ReceitaService } from '../../../../services/receita/receita.service';
 
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';

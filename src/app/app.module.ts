@@ -3,37 +3,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { AngularMaterialModule } from './angular-material.module';
-
-import { NaoLogadoComponent } from './nao-logado/nao-logado.component';
-import { CriarContaComponent } from './nao-logado/criar-conta/criar-conta.component';
-import { NavComponent } from './logado/layout/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { HomeComponent } from './logado/home/home.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import {MatTableModule} from '@angular/material/table';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NaoLogadoComponent } from './components/nao-logado/nao-logado.component';
+import { CriarContaComponent } from './components/nao-logado/criar-conta/criar-conta.component';
+import { NavComponent } from './layout/nav/nav.component';
+import { HomeComponent } from './components/logado/home/home.component';
 import { SalvarTabelaIngredienteFireStoreComponent } from './salvar-tabela-ingrediente-fire-store/salvar-tabela-ingrediente-fire-store.component';
-import { ListarReceitasComponent } from './logado/receita/listar-receitas/listar-receitas.component';
-import { CadastrarReceitaComponent } from './logado/receita/cadastrar-receita/cadastrar-receita.component';
-import { VisualizarReceitaComponent } from './logado/receita/visualizar-receita/visualizar-receita.component';
+import { ListarReceitasComponent } from './components/logado/receita/listar-receitas/listar-receitas.component';
+import { CadastrarReceitaComponent } from './components/logado/receita/cadastrar-receita/cadastrar-receita.component';
+import { VisualizarReceitaComponent } from './components/logado/receita/visualizar-receita/visualizar-receita.component';
+import { CadastrarIngredienteComponent } from './components/logado/ingrediente/cadastrar-ingrediente/cadastrar-ingrediente.component';
+import { ListarIngredientesComponent } from './components/logado/ingrediente/listar-ingredientes/listar-ingredientes.component';
 
 
 @NgModule({
@@ -46,7 +34,9 @@ import { VisualizarReceitaComponent } from './logado/receita/visualizar-receita/
     CadastrarReceitaComponent,
     SalvarTabelaIngredienteFireStoreComponent,
     ListarReceitasComponent,
-    VisualizarReceitaComponent
+    VisualizarReceitaComponent,
+    CadastrarIngredienteComponent,
+    ListarIngredientesComponent
   ],
   imports: [
     BrowserModule,

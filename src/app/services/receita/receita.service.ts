@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { NutrientesReceita } from 'src/app/classes/nutrientesReceita.model';
-import { Receita } from 'src/app/classes/receita.model';
+import { NutrientesReceita } from 'src/app/entities/nutrientesReceita.model';
+import { Receita } from 'src/app/entities/receita.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,29 @@
+export interface Ingrediente {
+    nome: string;
+    umidade: number;
+    energia: number;
+    energiaJaule: number;
+    proteina: number;
+    lipidios: number;
+    colesterol: number;
+    carboidratoTotal: number;
+    fibraAlimentar: number;
+    cinza: number;
+    calcio: number;
+    magnesio: number;
+    manganes: number;
+    fosforo: number;
+    ferro: number;
+    sodio: number;
+    potassio: number;
+    cobre: number;
+    zinco: number;
+    retinol: number;
+    tiamina: number;
+    riboflavina: number;
+    piridoxina: number;
+    niacina: number;
+    acidosGraxosSaturadas: number;
+    acidosGraxosMonoinsaturados: number;
+    acidosGraxosPoliinsaturada: number;
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ContadoresService } from '../service/contadores/contadores.service';
+import { ContadoresService } from '../../../services/contadores/contadores.service';
 
 @Component({
   selector: 'app-home',
